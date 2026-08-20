@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-pvc
+  labels:
+    app: nginx
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  # If your cluster has a default StorageClass (managed clusters usually do),
+  # leave this commented out. Otherwise, set your provisioner's class name:
+  # storageClassName: standard
