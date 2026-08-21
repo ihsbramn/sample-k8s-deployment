@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-configmap
+  labels:
+    app: nginx
+data:
+  # consumed by the Deployment as an environment variable
+  welcome-message: "Hello from nginx, deployed via ConfigMap!"
+
+  # mounted into the Pod at /etc/nginx/conf.d/default.conf
+  default.conf: |
+    server {
+      listen 80;
+      server_name _;
+
+      location / {
+        root /usr/share/nginx/html;
+        index index.html;
+      }
+
+      location /healthz {
+        access_log off;
+        add_header Content-Type text/plain;
+        return 200 "ok\n";
+      }
+    }
