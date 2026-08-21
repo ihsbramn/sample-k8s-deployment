@@ -6,7 +6,7 @@ metadata:
     app: nginx
 spec:
   # NOTE: `latest` tag is fine for demos; pin a version (e.g. 1.27.0) for production.
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: nginx
